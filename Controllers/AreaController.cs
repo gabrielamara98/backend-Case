@@ -15,7 +15,7 @@ namespace Case.Controllers
             new Area() {Id = 3, Nome = "RH", Descricao = "Area do RH", Status = true, Responsavel="Rodrigo"}
         };
 
-        [HttpGet]
+        [HttpGet("get-all")]
         public ActionResult<List<Area>> GetAll()
         {
             return Ok(listaArea);

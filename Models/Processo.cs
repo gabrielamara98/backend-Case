@@ -5,7 +5,7 @@
         public int Id { get; set; }
         public string Nome { get; set; }
 
-        public int IdPai { get; set; }
+        public int? IdPai { get; set; }
 
         public int IdArea { get; set; }
 
