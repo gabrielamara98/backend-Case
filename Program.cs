@@ -14,7 +14,8 @@ builder.Services.AddCors(options =>
     });
 });
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlite("Data Source=app.db"));
+    options.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=Case;Trusted_Connection=True;TrustServerCertificate=True;"));
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
