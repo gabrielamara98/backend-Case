@@ -23,5 +23,12 @@ namespace Case.Service
             var areaId = _context.Areas.FirstOrDefault(c => c.Id == id);
             return areaId;
         }
+
+        public Area AddArea(Area areaNova)
+        {
+            _context.Areas.Add(areaNova);
+            _context.SaveChanges();
+            return areaNova;
+        }
     }
 }

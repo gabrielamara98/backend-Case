@@ -27,5 +27,12 @@ namespace Case.Controllers
             var areaId = _areaService.GetById(id);
             return Ok(areaId);
         }
+
+        [HttpPost("nova-area")]
+        public ActionResult AddAreaNova([FromBody] Area areaNova)
+        {
+            var areaCriada = _areaService.AddArea(areaNova);
+            return Ok(areaCriada);
+        }
     }
 }

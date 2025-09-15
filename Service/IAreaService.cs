@@ -6,5 +6,7 @@ namespace Case.Service
     {
         public List<Area> GetAll();
         public Area GetById(int id);
+
+        public Area AddArea(Area areaNova);
     }
 }

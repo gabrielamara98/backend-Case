@@ -9,11 +9,10 @@
 
         public string Responsavel { get; set; }
 
-        public bool Status { get; set; }
+        public bool Status { get; set; } = true;
 
-        public DateTime Criado { get; set; }
+        public DateTime Criado { get; set; } = DateTime.Now;
 
-        public DateTime Atualizado { get; set; }
-        public ICollection<Processo> Processos { get; set; }
+        public DateTime Atualizado { get; set; } = DateTime.Now;
     }
 }
