@@ -8,5 +8,7 @@ namespace Case.Service
         public Area GetById(int id);
 
         public Area AddArea(Area areaNova);
+
+        public Area SoftDelete(int id);
     }
 }

@@ -14,8 +14,7 @@ namespace Case.Service
         }
         public List<Area> GetAll()
         {
-            var dbArea = _context.Areas.ToList();
-            return dbArea;
+            return _context.Areas.Where(c => c.Status == true).ToList();
         }
 
         public Area GetById(int id)
@@ -29,6 +28,24 @@ namespace Case.Service
             _context.Areas.Add(areaNova);
             _context.SaveChanges();
             return areaNova;
+        }
+        public Area SoftDelete(int id)
+        {
+           var area= _context.Areas.Find(id);
+           if(area == null)
+            {
+                throw new Exception("Key nao encontrada");
+            }
+           if(area.Status == true)
+            {
+                area.Status = false;
+                _context.SaveChanges();
+                return area;
+            }
+            else
+            {
+                throw new Exception("Item ja deletado");
+            }
         }
     }
 }

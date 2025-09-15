@@ -34,5 +34,12 @@ namespace Case.Controllers
             var areaCriada = _areaService.AddArea(areaNova);
             return Ok(areaCriada);
         }
+
+        [HttpPut("delete/${id}")]
+        public ActionResult SoftDelete(int id)
+        {
+            var area = _areaService.SoftDelete(id);
+            return Ok(area);
+        }
     }
 }
