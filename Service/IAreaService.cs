@@ -4,6 +4,7 @@ namespace Case.Service
 {
     public interface IAreaService
     {
-        public Area GetAll();
+        public List<Area> GetAll();
+        public Area GetById(int id);
     }
 }

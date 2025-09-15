@@ -14,5 +14,6 @@
         public DateTime Criado { get; set; }
 
         public DateTime Atualizado { get; set; }
+        public ICollection<Processo> Processos { get; set; }
     }
 }

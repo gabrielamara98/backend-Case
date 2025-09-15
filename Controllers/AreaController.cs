@@ -18,7 +18,14 @@ namespace Case.Controllers
         [HttpGet("get-all")]
         public ActionResult<List<Area>> GetAll()
         {
-            return Ok();
+            var areas = _areaService.GetAll();
+            return Ok(areas);
+        }
+        [HttpGet("{id}")]
+        public ActionResult<Area> GetById(int id)
+        {
+            var areaId = _areaService.GetById(id);
+            return Ok(areaId);
         }
     }
 }

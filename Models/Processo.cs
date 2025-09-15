@@ -19,6 +19,8 @@
 
         public DateTime Atualizado { get; set; }
 
+        public Area Area { get; set; }
+
 
     }
 }

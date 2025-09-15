@@ -1,4 +1,5 @@
 using Case.Data;
+using Case.Service;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,7 +16,8 @@ builder.Services.AddCors(options =>
 });
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=Case;Trusted_Connection=True;TrustServerCertificate=True;"));
-
+builder.Services.AddScoped<IAreaService, AreaService>();
+builder.Services.AddScoped<IProcessoService, ProcessoService>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 

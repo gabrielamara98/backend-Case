@@ -1,12 +1,27 @@
-﻿using Case.Models;
+﻿using Case.Data;
+using Case.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Case.Service
 {
     public class AreaService : IAreaService
     {
-        public Area GetAll()
+        private readonly AppDbContext _context;
+
+        public AreaService(AppDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
+        }
+        public List<Area> GetAll()
+        {
+            var dbArea = _context.Areas.ToList();
+            return dbArea;
+        }
+
+        public Area GetById(int id)
+        {
+            var areaId = _context.Areas.FirstOrDefault(c => c.Id == id);
+            return areaId;
         }
     }
 }
