@@ -1,32 +1,47 @@
-﻿using Case.Dto;
+﻿using Case.Data;
+using Case.Dto;
+using Case.Models;
 
 namespace Case.Service
 {
     public class ProcessoService : IProcessoService
     {
-        public ProcessoDto GetById(int id)
-        {
-            //var idProcesso = .FirstOrDefault(x => x.Id == id);
-            //if (idProcesso == null)
-            //{
-            //    return NotFound();
-            //}
-            //var processosFilhos = .Where(x => x.IdPai == id);
+        private readonly AppDbContext _context;
 
-            //ProcessoDto response = new ProcessoDto()
-            //{
-            //    Id = idProcesso.Id,
-            //    Nome = idProcesso.Nome,
-            //    IdPai = idProcesso.IdPai,
-            //    IdArea = idProcesso.IdArea,
-            //    Descricao = idProcesso.Descricao,
-            //    Responsavel = idProcesso.Responsavel,
-            //    Status = idProcesso.Status,
-            //    Criado = idProcesso.Criado,
-            //    Atualizado = idProcesso.Atualizado,
-            //    ProcessosFilhos = processosFilhos.ToList()
-            //};
-            throw new NotImplementedException();
+        public ProcessoService(AppDbContext context)
+        {
+            _context = context;
+        }
+
+        public Processo AddAProcessoFilho(Processo novoProcesso)
+        {
+            _context.Processos.Add(novoProcesso);
+            _context.SaveChanges();
+            return novoProcesso;
+        }
+
+        public Processo AddAProcessoPai(Processo novoProcesso)
+        {
+            _context.Processos.Add(novoProcesso);
+            _context.SaveChanges();
+            return novoProcesso;
+        }
+
+        public Processo GetById(int id)
+        {
+            return _context.Processos.FirstOrDefault(c=> c.Id ==id);
+        }
+
+        public List<Processo> GetByIdPai(int id)
+        {
+            var idArea = _context.Processos.Where(c => c.IdPai == id).ToList();
+            return idArea;
+        }
+
+        public List<Processo> GetPaiAreaById(int id)
+        {
+            var idArea = _context.Processos.Where(c => c.IdArea == id && c.IdPai ==null).ToList();
+            return idArea;
         }
     }
 }
